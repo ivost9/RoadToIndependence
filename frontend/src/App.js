@@ -4,7 +4,9 @@ import axios from "axios";
 import "./App.css";
 
 const API_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:5000/api/days";
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000/api/days"
+    : "https://roadtoindependence.onrender.com/api/days";
 
 // Помощна функция за вземане на дата в локален формат YYYY-MM-DD
 const getLocalDateString = (date) => {
