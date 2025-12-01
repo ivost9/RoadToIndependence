@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ Connected to MongoDB (Road to Independence DB)"))
   .catch((err) => console.error("❌ DB Connection Error:", err));
 
