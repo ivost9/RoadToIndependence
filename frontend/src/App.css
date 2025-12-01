@@ -1,0 +1,364 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&display=swap");
+
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #0f1014;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* LEFT PANEL */
+.left-panel {
+  width: 35%;
+  background: linear-gradient(180deg, #12141a 0%, #000000 100%);
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #222;
+  position: relative;
+  z-index: 10;
+}
+
+.subtitle {
+  color: #fca311;
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 0.9;
+  color: #fff;
+}
+
+.header .outline {
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  opacity: 0.8;
+}
+
+.rules-section h3 {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.rules-list {
+  list-style: none;
+}
+
+.rules-list li {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  color: #bbb;
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+}
+
+.check-icon {
+  color: #fca311; /* Mustang Amber Color */
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+/* MUSTANG ENGINE (PROGRESS) */
+.mustang-engine {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 4px;
+  border-left: 3px solid #fca311;
+}
+
+.car-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #333;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #fca311;
+  width: 0%;
+  transition: width 0.8s ease-in-out;
+  position: relative;
+  box-shadow: 0 0 10px #fca311;
+}
+
+.exhaust-fire {
+  position: absolute;
+  right: -6px;
+  top: -10px;
+  font-size: 16px;
+}
+
+.quote {
+  margin-top: 15px;
+  font-size: 0.7rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  width: 65%;
+  background: radial-gradient(circle at center, #1a1d26 0%, #050505 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Голям фонов текст за атмосфера */
+.calendar-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* CALENDAR STYLES */
+.react-calendar {
+  width: 550px;
+  max-width: 90%;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+.react-calendar__navigation button {
+  color: #fff;
+  min-width: 44px;
+  background: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.react-calendar__navigation button:enabled:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.7em;
+  color: #444;
+  margin-bottom: 10px;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  opacity: 0;
+  pointer-events: none;
+}
+.react-calendar__tile {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  transition: all 0.2s;
+  font-weight: 500;
+  /* ЗАБРАНЯВАМЕ кликането върху всички дни по подразбиране */
+  pointer-events: none;
+}
+
+.react-calendar__tile:enabled:hover {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.react-calendar__tile--now {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fca311;
+  /* РАЗРЕШАВАМЕ кликането само за днешния ден */
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* SUCCESS / FAIL */
+.day-success {
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #22c55e !important;
+  border-bottom: 2px solid #22c55e;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+}
+
+.day-fail {
+  background: rgba(220, 38, 38, 0.15) !important;
+  color: #dc2626 !important;
+  border-bottom: 2px solid #dc2626;
+  opacity: 0.6;
+}
+
+.legend {
+  margin-top: 40px;
+  display: flex;
+  gap: 30px;
+  z-index: 5;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #555;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+}
+
+.dot.green {
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+}
+.dot.red {
+  background: #dc2626;
+}
+
+/* --- NEW MODAL STYLES --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: #14161b;
+  padding: 3rem;
+  border: 1px solid #333;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(252, 163, 17, 0.1);
+  max-width: 450px;
+  width: 90%;
+  transform: scale(0.95);
+  animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.modal-content h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.modal-content p {
+  color: #888;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.modal-actions button {
+  padding: 15px 25px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
+
+.btn-success {
+  background: #fca311;
+  color: #000;
+  box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+}
+
+.btn-success:hover {
+  background: #ffb700;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(252, 163, 17, 0.5);
+}
+
+.btn-fail {
+  background: transparent;
+  color: #dc2626;
+  border: 1px solid #dc2626 !important;
+}
+
+.btn-fail:hover {
+  background: rgba(220, 38, 38, 0.1);
+  color: #ff5555;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popUp {
+  to {
+    transform: scale(1);
+  }
+}
